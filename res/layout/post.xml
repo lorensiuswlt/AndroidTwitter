@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:padding="10dp">
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:gravity="left"
+		android:textSize="13sp"
+		android:textColor="#fff"
+		android:text="This example shows how to post Twitter status. If there is no saved session, the authorization
+		dialog will be displayed."/>
+		
+	<EditText
+		android:id="@+id/revieew"
+		android:layout_marginTop="15dp"
+		android:layout_width="250dp"
+		android:layout_height="100dp"
+		android:hint="Write your review"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:gravity="left"
+		android:textSize="13sp"
+		android:textColor="#fff"
+		android:text="Also share to:"/>
+		
+	<CheckBox
+		android:id="@+id/twitterCheck"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:layout_marginLeft="5dp"
+		android:text="  Twitter"
+		android:textSize="14sp"
+		android:clickable="true"
+		android:focusable="true" 
+		android:button="@drawable/twitter_check"/>
+
+	<Button
+		android:id="@+id/button1"
+		android:layout_marginTop="15dp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="    Submit    "/>
+</LinearLayout>

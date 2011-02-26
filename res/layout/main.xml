@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:padding="10dp">
+
+  	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textSize="13sp"
+		android:textColor="#fff"
+		android:text="This example shows how to connect to Twitter, display authorization dialog and save user's token and username"/>
+		
+	<CheckBox
+		android:id="@+id/twitterCheck"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:layout_marginLeft="5dp"
+		android:text="  Twitter (Not connected) "
+		android:textSize="14sp"
+		android:textStyle="bold"
+		android:textColor="#ccc"
+		android:clickable="true"
+		android:focusable="true" 
+		android:button="@drawable/twitter_check"/>
+	
+	<Button
+		android:id="@+id/button1"
+		android:layout_marginTop="10dp"
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content"
+		android:text=" Test Post" />
+
+</LinearLayout>
