@@ -1,3 +1,8 @@
+/**
+ * Modified from FbDialog from Facebook SDK
+ * 
+ * Lorensius W. L. T <lorenz@londatiga.net>
+ */
 package net.londatiga.android;
 
 import android.app.Dialog;

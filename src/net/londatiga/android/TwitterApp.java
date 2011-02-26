@@ -1,7 +1,7 @@
 /**
  * @author Lorensius W. L. T <lorenz@londatiga.net>
  * 
- * Website: http://www.londatiga.net
+ * http://www.londatiga.net
  */
 
 package net.londatiga.android;
