@@ -3,9 +3,9 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-	<classpathentry kind="lib" path="D:/android-sdk-windows/extlibs/Twitter/signpost-commonshttp4-1.2.1.1.jar"/>
-	<classpathentry kind="lib" path="D:/android-sdk-windows/extlibs/Twitter/signpost-core-1.2.1.1.jar"/>
-	<classpathentry kind="lib" path="D:/android-sdk-windows/extlibs/Twitter/signpost-jetty6-1.2.1.1.jar"/>
-	<classpathentry kind="lib" path="D:/android-sdk-windows/extlibs/Twitter/twitter4j-core-2.1.6.jar"/>
+	<classpathentry kind="lib" path="/Users/lorensiuswlt/Android/android-sdk-mac_x86/libs/Twitter/signpost-commonshttp4-1.2.1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/lorensiuswlt/Android/android-sdk-mac_x86/libs/Twitter/signpost-core-1.2.1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/lorensiuswlt/Android/android-sdk-mac_x86/libs/Twitter/signpost-jetty6-1.2.1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/lorensiuswlt/Android/android-sdk-mac_x86/libs/Twitter/twitter4j-core-2.1.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
