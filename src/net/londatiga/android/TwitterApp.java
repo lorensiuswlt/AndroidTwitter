@@ -40,6 +40,7 @@ public class TwitterApp {
 	private ProgressDialog mProgressDlg;
 	private TwDialogListener mListener;
 	private Context context;
+	private boolean mInit = true;
 	
 	public static final String CALLBACK_URL = "twitterapp://connect";
 	private static final String TAG = "TwitterApp";
@@ -73,7 +74,10 @@ public class TwitterApp {
 	@SuppressWarnings("deprecation")
 	private void configureToken() {
 		if (mAccessToken != null) {
-			mTwitter.setOAuthConsumer(mConsumerKey, mSecretKey);
+			if (mInit) {
+				mTwitter.setOAuthConsumer(mConsumerKey, mSecretKey);
+				mInit = false;
+			}
 			
 			mTwitter.setOAuthAccessToken(mAccessToken);
 		}
