@@ -32,7 +32,7 @@ public class TestConnect extends Activity {
 	private CheckBox mTwitterBtn;
 
 	private static final String twitter_consumer_key = "xxx";
-	private static final String twitter_secret_key = "xxxx";
+	private static final String twitter_secret_key = "xxx";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

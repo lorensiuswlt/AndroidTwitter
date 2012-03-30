@@ -26,13 +26,12 @@ import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
 
 import net.londatiga.android.TwitterApp.TwDialogListener;
 
 public class TwitterDialog extends Dialog {
-
-    static final float[] DIMENSIONS_LANDSCAPE = {460, 260};
-    static final float[] DIMENSIONS_PORTRAIT = {280, 420};
     static final FrameLayout.LayoutParams FILL = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
                          						ViewGroup.LayoutParams.FILL_PARENT);
     static final int MARGIN = 4;
@@ -70,12 +69,18 @@ public class TwitterDialog extends Dialog {
         setUpTitle();
         setUpWebView();
         
-        Display display 	= getWindow().getWindowManager().getDefaultDisplay();
-        final float scale 	= getContext().getResources().getDisplayMetrics().density;
-        float[] dimensions 	= (display.getWidth() < display.getHeight()) ? DIMENSIONS_PORTRAIT : DIMENSIONS_LANDSCAPE;
+        Display display = getWindow().getWindowManager().getDefaultDisplay();
+        double[] dimensions = new double[2];
         
-        addContentView(mContent, new FrameLayout.LayoutParams((int) (dimensions[0] * scale + 0.5f),
-        							(int) (dimensions[1] * scale + 0.5f)));
+        if (display.getWidth() < display.getHeight()) {
+        	dimensions[0]	= 0.87 * display.getWidth();
+        	dimensions[1]	= 0.82 * display.getHeight();
+        } else {
+        	dimensions[0]	= 0.75 * display.getWidth();
+        	dimensions[1]	= 0.75 * display.getHeight();        
+        }
+        
+        addContentView(mContent, new FrameLayout.LayoutParams((int) dimensions[0], (int) dimensions[1]));
     }
 
     private void setUpTitle() {
@@ -97,6 +102,10 @@ public class TwitterDialog extends Dialog {
     }
 
     private void setUpWebView() {
+    	CookieSyncManager.createInstance(getContext()); 
+        CookieManager cookieManager = CookieManager.getInstance();
+        cookieManager.removeAllCookie();
+        
         mWebView = new WebView(getContext());
         
         mWebView.setVerticalScrollBarEnabled(false);
