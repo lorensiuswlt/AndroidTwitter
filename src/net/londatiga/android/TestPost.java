@@ -10,6 +10,7 @@ package net.londatiga.android;
 
 import net.londatiga.android.TwitterApp.TwDialogListener;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 
 import android.os.Bundle;
@@ -24,14 +25,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.Button;
 
+@SuppressLint("HandlerLeak")
 public class TestPost extends Activity {
 	private TwitterApp mTwitter;
 	private CheckBox mTwitterBtn;
 	private String username = "";
 	private boolean postToTwitter = false;
 	
-	private static final String twitter_consumer_key = "xxx";
-	private static final String twitter_secret_key = "xxx";
+	private static final String twitter_consumer_key = "";
+	private static final String twitter_secret_key = "";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

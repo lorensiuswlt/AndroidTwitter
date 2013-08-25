@@ -1,6 +1,13 @@
 Change Log
 ===============================================================================
 
+Version 1.0.2 *(2013-08-25)*
+----------------------------
+
+1. Update compatibility with Twitter API v1.1:
+2. Replace request token, access token and authorization url with the new urls
+3. Replace old Twitter4j with the latest version (3.0.3) 
+
 Version 1.0.1 *(2012-03-30)*
 ----------------------------
 

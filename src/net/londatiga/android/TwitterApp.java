@@ -16,12 +16,13 @@ import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
-import twitter4j.http.AccessToken;
+import twitter4j.auth.AccessToken;
 import twitter4j.User;
 
 import android.os.Handler;
 import android.os.Message;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
@@ -29,6 +30,7 @@ import android.view.Window;
 
 import java.net.URL;
 
+@SuppressLint("HandlerLeak")
 public class TwitterApp {
 	private Twitter mTwitter;
 	private TwitterSession mSession;
@@ -58,9 +60,9 @@ public class TwitterApp {
 		mSecretKey	 	= secretKey;
 	
 		mHttpOauthConsumer = new CommonsHttpOAuthConsumer(mConsumerKey, mSecretKey);
-		mHttpOauthprovider = new DefaultOAuthProvider("http://twitter.com/oauth/request_token",
-													 "http://twitter.com/oauth/access_token",
-													 "http://twitter.com/oauth/authorize");
+		mHttpOauthprovider = new DefaultOAuthProvider("https://api.twitter.com/oauth/request_token	",
+													 "https://api.twitter.com/oauth/access_token",
+													 "https://api.twitter.com/oauth/authorize");
 		
 		mAccessToken	= mSession.getAccessToken();
 		
@@ -71,7 +73,6 @@ public class TwitterApp {
 		mListener = listener;
 	}
 	
-	@SuppressWarnings("deprecation")
 	private void configureToken() {
 		if (mAccessToken != null) {
 			if (mInit) {
@@ -150,6 +151,8 @@ public class TwitterApp {
 		
 					mAccessToken = new AccessToken(mHttpOauthConsumer.getToken(), mHttpOauthConsumer.getTokenSecret());
 				
+					Log.d(TAG, "Token: " + mAccessToken.getToken());
+					
 					configureToken();
 				
 					User user = mTwitter.verifyCredentials();
@@ -168,6 +171,7 @@ public class TwitterApp {
 		}.start();
 	}
 	
+	@SuppressWarnings("deprecation")
 	private String getVerifier(String callbackUrl) {
 		String verifier	 = "";
 		

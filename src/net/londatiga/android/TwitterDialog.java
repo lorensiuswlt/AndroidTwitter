@@ -5,14 +5,17 @@
  */
 package net.londatiga.android;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.content.Context;
@@ -31,9 +34,10 @@ import android.webkit.CookieSyncManager;
 
 import net.londatiga.android.TwitterApp.TwDialogListener;
 
+@SuppressLint("NewApi")
 public class TwitterDialog extends Dialog {
-    static final FrameLayout.LayoutParams FILL = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
-                         						ViewGroup.LayoutParams.FILL_PARENT);
+    static final FrameLayout.LayoutParams FILL = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                         						ViewGroup.LayoutParams.MATCH_PARENT);
     static final int MARGIN = 4;
     static final int PADDING = 2;
 
@@ -53,7 +57,8 @@ public class TwitterDialog extends Dialog {
         mListener 	= listener;
     }
 
-    @Override
+	@SuppressWarnings("deprecation")
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -69,16 +74,31 @@ public class TwitterDialog extends Dialog {
         setUpTitle();
         setUpWebView();
         
-        Display display = getWindow().getWindowManager().getDefaultDisplay();
-        double[] dimensions = new double[2];
-        
-        if (display.getWidth() < display.getHeight()) {
-        	dimensions[0]	= 0.87 * display.getWidth();
-        	dimensions[1]	= 0.82 * display.getHeight();
-        } else {
-        	dimensions[0]	= 0.75 * display.getWidth();
-        	dimensions[1]	= 0.75 * display.getHeight();        
-        }
+        Display display 	= getWindow().getWindowManager().getDefaultDisplay();
+		Point outSize		= new Point();
+		
+		int width			= 0;
+		int height			= 0;
+		
+		double[] dimensions = new double[2];
+		        
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
+			display.getSize(outSize);
+			
+			width	= outSize.x;
+			height	= outSize.y;
+		} else {
+			width	= display.getWidth();
+			height	= display.getHeight();
+		}
+		
+		if (width < height) {
+			dimensions[0]	= 0.87 * width;
+	        dimensions[1]	= 0.82 * height;
+		} else {
+			dimensions[0]	= 0.75 * width;
+			dimensions[1]	= 0.75 * height;	        
+		}
         
         addContentView(mContent, new FrameLayout.LayoutParams((int) dimensions[0], (int) dimensions[1]));
     }
@@ -101,7 +121,8 @@ public class TwitterDialog extends Dialog {
         mContent.addView(mTitle);
     }
 
-    private void setUpWebView() {
+    @SuppressLint("SetJavaScriptEnabled")
+	private void setUpWebView() {
     	CookieSyncManager.createInstance(getContext()); 
         CookieManager cookieManager = CookieManager.getInstance();
         cookieManager.removeAllCookie();

@@ -9,7 +9,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.Context;
 
-import twitter4j.http.AccessToken;
+import twitter4j.auth.AccessToken;
 
 public class TwitterSession {
 	private SharedPreferences sharedPref;
